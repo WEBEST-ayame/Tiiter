@@ -15,7 +15,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.twiiter.base.entity.TwiiterTwiitEntity;
@@ -40,7 +39,7 @@ public class TwiiterController {
 	}
 	
 	// ユーザー情報登録
-	@GetMapping("twiiter/registration")
+	@GetMapping("twiiter/newRegistration")
 	public String registration(@Validated TwiiterForm twiiterForm, BindingResult result, Model model) throws ParseException {
 
 		model.addAttribute("title", "新規登録");
@@ -82,7 +81,7 @@ public class TwiiterController {
 	 * @param model リクエストスコープ上にオブジェクトを載せるためのmap
 	 * @return helloページのViewName
 	 */
-	@RequestMapping("/twiiter/twiit")
+	@PostMapping("/twiiter/login")
 	private String init(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		//Principalからログインユーザの情報を取得
